@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class atm {
+public class atm { // Dosya adi atm.java oldugu icin sinif adi da atm
 
     // --- GLOBAL DEĞİŞKENLER ---
     static double bakiye = 5000.0;
@@ -12,7 +12,7 @@ public class atm {
     public static void karsilamaEkrani() {
         System.out.println("\n\t*****************************************");
         System.out.println("\t* GELİSMİS YAPI BANK        *");
-        System.out.println("\t*   BANKAMIZA HOSGELDİNİZ    *");
+        System.out.println("\t* BANKAMIZA HOSGELDİNİZ    *");
         System.out.println("\t*****************************************");
     }
 
@@ -128,6 +128,37 @@ public class atm {
                         System.out.println("Faturaniz odendi. Kalan: " + bakiye);
                         gecmisIslemler[islemSayaci % 5] = "Fatura odemesi yapildi.";
                         islemSayaci++;
+                    }
+                    break;
+
+                case 5: // Mobil TL Yukleme - YENI EKLENDI
+                    System.out.println("\n[MOBIL TL YUKLEME]");
+                    System.out.print("Yuklenecek Telefon No (5XX...): ");
+                    String telNo = scanner.next();
+                    System.out.print("Yuklenecek Tutar: ");
+                    double tlTutar = scanner.nextDouble();
+                    
+                    if (limitKontrol(tlTutar)) {
+                        bakiye -= tlTutar;
+                        System.out.println(telNo + " nolu hatta " + tlTutar + " TL yuklendi.");
+                        gecmisIslemler[islemSayaci % 5] = "Mobil TL yuklemesi yapildi.";
+                        islemSayaci++;
+                    }
+                    break;
+
+                case 6: // Sifre Degistirme - YENI EKLENDI
+                    System.out.println("\n[SIFRE DEGISTIRME]");
+                    System.out.print("Mevcut PIN'inizi girin: ");
+                    String mevcutPin = scanner.next();
+                    
+                    if (mevcutPin.equals(tanimliPin)) {
+                        System.out.print("Yeni PIN giriniz: ");
+                        tanimliPin = scanner.next(); 
+                        System.out.println("Sifreniz basariyla degistirildi.");
+                        gecmisIslemler[islemSayaci % 5] = "PIN kodu degistirildi.";
+                        islemSayaci++;
+                    } else {
+                        System.out.println("HATA: Mevcut PIN yanlis!");
                     }
                     break;
 
