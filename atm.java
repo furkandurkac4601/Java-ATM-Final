@@ -189,7 +189,8 @@ public class atm { // Dosya adi atm.java oldugu icin sinif adi da atm
 
                 case 8:
                     System.out.println("\nGuvenli cikis yapiliyor. Kartinizi almayi unutmayin!");
-                    System.out.println("Bizi tercih ettiginiz icin tesekkurler Gakgos!");
+                    System.out.println("Bizi tercih ettiginiz icin tesekkurler ");
+                    System.out.println("iyi günler dileriz");
                     return;
 
                 default:
